@@ -1,0 +1,10 @@
+topnav:
+- title: Topnav
+  items:
+    - title: github
+      external_url: https://github.com/houssemeddinebayoudha/Predict_Player_Pos/tree/master/
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
