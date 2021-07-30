@@ -1,10 +1,10 @@
 # Predict Players Position
-> Summary description here.
+> Used to predict player's position using a heatmap generated using his postion in a given game.
 
 
 ## Install
 
-`pip install your_project_name`
+`pip install Predict_Player_Pos`
 
 ## How to use
 
@@ -29,7 +29,7 @@ p.def_model(resnet=resnet18,metric=accuracy);
 ```
 
 ```python
-p.tune_model(epoch=3)
+p.tune_model(epoch=2)
 ```
 
 
@@ -46,10 +46,10 @@ p.tune_model(epoch=3)
   <tbody>
     <tr>
       <td>0</td>
-      <td>2.416431</td>
-      <td>1.816591</td>
-      <td>0.385493</td>
-      <td>03:45</td>
+      <td>2.372960</td>
+      <td>1.807146</td>
+      <td>0.391162</td>
+      <td>04:15</td>
     </tr>
   </tbody>
 </table>
@@ -69,31 +69,36 @@ p.tune_model(epoch=3)
   <tbody>
     <tr>
       <td>0</td>
-      <td>1.761924</td>
-      <td>1.533908</td>
-      <td>0.417685</td>
-      <td>03:44</td>
+      <td>1.721329</td>
+      <td>1.509000</td>
+      <td>0.440262</td>
+      <td>04:16</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>1.560983</td>
-      <td>1.492623</td>
-      <td>0.423798</td>
-      <td>03:41</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>1.330911</td>
-      <td>1.495518</td>
-      <td>0.449878</td>
-      <td>03:40</td>
+      <td>1.466226</td>
+      <td>1.467276</td>
+      <td>0.452946</td>
+      <td>04:36</td>
     </tr>
   </tbody>
 </table>
 
 
 ```python
-p.train_model(epoch=1)
+s=p.learn.lr_find()
+```
+
+
+
+
+
+
+![png](docs/images/output_8_1.png)
+
+
+```python
+p.train_model(epoch=1,lr=s)
 ```
 
 
@@ -110,21 +115,21 @@ p.train_model(epoch=1)
   <tbody>
     <tr>
       <td>0</td>
-      <td>1.268402</td>
-      <td>1.142709</td>
-      <td>0.592471</td>
-      <td>04:37</td>
+      <td>1.109406</td>
+      <td>0.939968</td>
+      <td>0.680779</td>
+      <td>03:41</td>
     </tr>
   </tbody>
 </table>
 
 
 ```python
-p.save_weights(m_name="furGitAfterFixingVFinal")
+p.save_weights(m_name="AiV4")
 ```
 
 ```python
-p.load_weights("furGitAfterFixingVFinal")
+p.load_weights("AiV3")
 ```
 
 ```python
@@ -136,7 +141,7 @@ p.Confusion_matrix()
 
 
 
-![png](docs/images/output_11_1.png)
+![png](docs/images/output_12_1.png)
 
 
 ```python
@@ -154,3 +159,31 @@ p.error_viewer()
 ```python
 p.error_solver("position_detection")
 ```
+
+```python
+p.learn.dls=p.dls
+```
+
+```python
+p.learn.predict()
+```
+
+```python
+uploader=p.image_importer()
+uploader
+```
+
+```python
+p.learn.predict(PILImage.create(uploader.data[0]))[0]
+```
+
+
+
+
+
+
+
+
+    'FWR'
+
+

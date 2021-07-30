@@ -3,8 +3,6 @@
 __all__ = ['Player_Pos']
 
 # Cell
-from fastai.vision.all import *
-from fastai.vision.widgets import *
 class Player_Pos:
 
 
@@ -127,6 +125,16 @@ class Player_Pos:
     def error_solver(
     self,f_name
     ):
+        """
+        iterate through the chosen images and delete the necessairy
+        ************************************************************
+        f_name : The name of the folder containing the images"""
         path=Path(f_name)
         for idx in self.cleaner.delete(): self.cleaner.fns[idx].unlink()
         for idx,cat in self.cleaner.change(): shutil.move(str(self.cleaner.fns[idx]), path/cat)
+    def image_importer(
+        self
+    ):
+        uploader = widgets.FileUpload()
+        return uploader
+
